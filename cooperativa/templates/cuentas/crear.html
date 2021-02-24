@@ -1,0 +1,43 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+<html>
+
+<head>
+    <meta>
+    <title>Crear cuenta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<h4>Crear Cuenta</h4>
+<div class="container">
+    <form method="POST">{% csrf_token %} 
+        <div class="form-group">
+            <label for="id_numero">Numero:</label> 
+            <input type="text" class="form-control" name="numero" maxlength="20" required id="id_numero">
+        </div><br>
+        <div class="form-group">
+            <label for="id_tipoCuenta">TipoCuenta:</label> 
+            <select name="tipoCuenta" class="form-control" id="id_tipoCuenta">
+                <option value="ahorros">Ahorros</option>
+              
+                <option value="corriente">Corriente</option>
+              
+                <option value="programado">Programado</option>
+              
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_saldo">Saldo:</label> 
+            <input type="number" class="form-control" name="saldo" step="0.01" required id="id_saldo">
+        </div><br>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Crear Cuenta</button>
+        </div><br>
+    </form>
+</div>
+
+</html>
+{% endblock %}
+
+

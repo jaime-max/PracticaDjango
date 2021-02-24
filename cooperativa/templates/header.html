@@ -1,0 +1,28 @@
+<div class="card-header text-white bg-secondary">
+    <center>
+        <h1>Universidad Nacional de Loja</h1>
+        <li>Carrera: Ingeniería en COmputacion</li>
+        <li>Materia: Programación Avanzada - Programación Web</li>
+        <li>Docente: Rene Guaman</li>
+    </center>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #537180;">
+        <a class="navbar-brand" href="{% url 'autenticar' %}">Login</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbrext">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'homepage' %}">Indice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'clientes' %}">Cliente</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'transacciones' %}">Trasacciones</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

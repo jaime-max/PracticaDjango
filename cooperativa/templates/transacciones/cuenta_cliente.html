@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+{% block contenido %}
+
+<h4>Tranasaccion</h4>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td><strong>Cliente: </strong> {{cliente.nombres}} {{cliente.apellidos}}</td>
+                <td><strong>Cedula: </strong>{{cliente.cedula}}</td>
+                <td><strong>Correo: </strong>{{cliente.correo}}</td>
+                <td><strong>Telefono: </strong>{{cliente.telefono}}</td>
+            </tr>    
+        </thead>
+    </table>
+        
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Numero</th>
+                <th scope="col">Saldo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Operacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="table-success">{{cuenta.numero}}</td>
+                <td class="table-info">{{cuenta.saldo}}</td>
+                <td class="table-primary">{{cuenta.estado}}</td>
+                <td class="table-secondary">{{cuenta.tipoCuenta}}</td>
+                <td class="table-warning">
+                    <a class="btn btn-primary" href="{% url 'depositar' cuenta.numero %}"
+                    role="button">Depositar</a>
+                    <a class="btn btn-primary" href="{% url 'retirar' cuenta.numero %}"
+                    role="button">Retirar</a>
+    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+
+<h4>Lista de cuenta del cliete:</h4>
+<p>
+    Nombre: {{cliente.nombres}}<br>
+    Apellido: {{cliente.apellidos}}
+</p>
+
+
+<div class="container">
+    <a class="btn btn-primary" role="button" href="{% url 'crear_cuentas' cliente.cedula %}">Nueva Cuenta</a>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <th>Numero</th>
+                <th>Saldo</th>
+                <th>Estado</th>
+                <th>Tipo</th>
+                <th>Operacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cuenta in cuentas%}
+                <tr>
+                    <th scope="col">{{cuenta.numero}}</th>
+                    <th scope="col">{{cuenta.saldo}}</th>
+                    <th scope="col">{{cuenta.estado}}</th>
+                    <th scope="col">{{cuenta.tipoCuenta}}</th>
+                    <th class="table-danger">
+                        <a class="btn btn-primary" role="button" href="{% url 'eliminar_cuenta' cuenta.numero %}">Eliminar</a>
+                        <a class="btn btn-primary" role="button" href="{% url 'modificar_cuenta' cuenta.numero %}">Editar</a>
+                    </th>
+                </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

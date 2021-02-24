@@ -1,0 +1,17 @@
+
+{% extends 'master.html' %}
+
+{% block contenido %}
+
+<div class="jumbotron jumbotron-fluid">
+
+    <div class="container">
+        <h4 class="display-7">!Lo sientimos usted es un usuario desactivado!</h4>
+        <p class="lead"></p>
+        <hr class="my-4">
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'autenticar' %}" role="button">Regresar</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

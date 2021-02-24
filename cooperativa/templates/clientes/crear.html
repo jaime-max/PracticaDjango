@@ -1,0 +1,95 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+<html>
+
+<head>
+    <meta>
+    <title>Crear cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<h4>Crear Cliente</h4>
+<div class="container">
+    <form method="POST">{% csrf_token %}
+        <div class="form-group">
+            <label for="id_cedula">Cedula:</label>
+            <input type="text" class="form-control" name="cedula" maxlength="10" required id="id_cedula">
+        </div><br>
+        <div class="form-group">
+            <label for="id_apellidos">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" maxlength="70" required id="id_apellidos">
+        </div><br>
+        <div class="form-group">
+            <label for="id_nombres">Nombres:</label>
+            <input type="text" class="form-control" name="nombres" maxlength="70" required id="id_nombres">
+        </div><br>
+        <div class="form-group">
+            <label for="id_genero">Genero:</label>
+            <select name="genero" class="form-control" id="id_genero">
+                <option value="femenino">Femenino</option>
+
+                <option value="masculino">Masculino</option>
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_estadoCivil">EstadoCivil:</label>
+            <select name="estadoCivil" class="form-control" id="id_estadoCivil">
+                <option value="soltero">Soltero</option>
+
+                <option value="casado">Casado</option>
+
+                <option value="union">Unión Libre</option>
+
+                <option value="divorciado">Divoraciado</option>
+
+                <option value="viudo">Viudo</option>
+
+                <option value="separado">Separado</option>
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_correo">Correo:</label>
+            <input type="email" class="form-control" name="correo" maxlength="105" required id="id_correo">
+        </div><br>
+        <div class="form-group">
+            <label for="id_telefono">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" maxlength="15" required id="id_telefono">
+        </div><br>
+        <div class="form-group">
+            <label for="id_celular">Celular:</label>
+            <input type="text" class="form-control" name="celular" maxlength="15" required id="id_celular">
+        </div><br>
+        <div class="form-group">
+            <label for="id_direccion">Direccion:</label>
+            <textarea name="direccion" cols="40" rows="10" maxlength="200" class="form-control" required
+                id="id_direccion">
+                    </textarea>
+        </div><br>
+        <div class="form-group">
+            <label for="id_numero">Numero:</label>
+            <input type="text" class="form-control" name="numero" maxlength="20" required id="id_numero">
+        </div><br>
+        <div class="form-group">
+            <label for="id_tipoCuenta">TipoCuenta:</label>
+            <select name="tipoCuenta" class="form-control" id="id_tipoCuenta">
+                <option value="ahorros">Ahorros</option>
+
+                <option value="corriente">Corriente</option>
+
+                <option value="programado">Programado</option>
+
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_saldo">Saldo:</label>
+            <input type="number" class="form-control" name="saldo" step="0.01" required id="id_saldo">
+        </div><br>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Crear Cliente</button>
+        </div><br>
+    </form>
+</div>
+
+</html>
+{% endblock %}

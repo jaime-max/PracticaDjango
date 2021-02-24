@@ -1,0 +1,112 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+<html>
+
+<head>
+    <meta>
+    <title>Crear cliente</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<h4>Modificar Cliente</h4>
+<div class="container">
+    <form method="POST">{% csrf_token %} 
+        <div class="form-group">
+            <label for="id_cedula">Cedula:</label> 
+            <input type="text" class="form-control" name="cedula" value="{{ formulario_cliente.cedula.value }}" maxlength="10" required id="id_cedula">
+        </div><br>
+        <div class="form-group">
+            <label for="id_apellidos">Apellidos:</label> 
+            <input type="text" class="form-control" name="apellidos" value="{{ formulario_cliente.apellidos.value }}" maxlength="70" required id="id_apellidos">
+        </div><br>
+        <div class="form-group">
+            <label for="id_nombres">Nombres:</label> 
+            <input type="text" class="form-control" name="nombres" value="{{ formulario_cliente.nombres.value }}" maxlength="70" required id="id_nombres">
+        </div><br>
+        <div class="form-group">
+            <label for="id_genero">Genero:</label> 
+            <select name="genero" class="form-control" id="id_genero">
+                {% if formulario_cliente.genero.value == 'femenino' %}
+                <option value="femenino" selected>Femenino</option>
+                <option value="masculino" >Masculino</option>
+                {% elif formulario_cliente.genero.value == 'masculino' %}
+                <option value="femenino" >Femenino</option>
+                <option value="masculino" selected>Masculino</option>
+                {% endif %}
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_estadoCivil">EstadoCivil:</label> 
+            <select name="estadoCivil" value="{{ formulario_cliente.estadoCivil.value }}" class="form-control" id="id_estadoCivil" >
+                {% if formulario_cliente.estadoCivil.value == 'soltero' %}
+                <option value="soltero"selected>Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'casado' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado" selected>Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'union' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union" selected>Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'divorciado' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado" selected>Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'viudo' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo" selected>Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'separado' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado" selected>Separado</option>
+                {% endif %}
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_correo">Correo:</label> 
+            <input type="email" class="form-control" name="correo" value="{{ formulario_cliente.correo.value }}" maxlength="105" required id="id_correo">
+        </div><br>
+        <div class="form-group">
+            <label for="id_telefono">Telefono:</label> 
+            <input type="text" class="form-control" name="telefono" value="{{ formulario_cliente.telefono.value }}" maxlength="15" required id="id_telefono">
+        </div><br>
+        <div class="form-group">
+            <label for="id_celular">Celular:</label> 
+            <input type="text" class="form-control" name="celular" value="{{ formulario_cliente.celular.value }}" maxlength="15" required id="id_celular">
+        </div><br>
+        <div class="form-group">
+            <label for="id_direccion">Direccion:</label> 
+            <textarea class="form-control" name="direccion" cols="40" rows="10" maxlength="200" value="" required id="id_direccion">
+                {{ formulario_cliente.direccion.value }}</textarea>
+        </div><br>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Modificar Cliente</button>
+        </div><br>
+    </form>
+</div>
+
+</html>
+{% endblock %}
+

@@ -1,0 +1,62 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+<html>
+
+<head>
+    <meta>
+    <title>Cooperativa 2021</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <h4>Lista de Cliente</h4>
+            <form class="d-flex" method="POST">{% csrf_token %}
+                <input  class="form-control" name="busqueda" placeholder="Ingrese su Busqueda"
+                    aria-label="busqueda">
+                <button style="margin-left: 10px" class="btn btn-primary" type="submit">Buscar</button>
+                <a style="margin-left: 10px" class="btn btn-primary" href="{% url 'crear_clientes'%}" role="button">Nuevo Cliente</a>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Opciones</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in listaClientes%}
+                <tr>
+                    <td class="table-success">{{cliente.cedula}}</td>
+                    <td class="table-info">{{cliente.apellidos}}</td>
+                    <td class="table-primary">{{cliente.nombres}}</td>
+                    <td class="table-secondary">{{cliente.correo}}</td>
+                    <td class="table-warning"><a class="btn btn-primary" href="{% url 'cuentas' cliente.cedula %}"
+                            role="button">Cuentas</a></td>
+                    <td class="table-danger">
+                        <a class="btn btn-primary" href="{% url 'eliminar_cliente' cliente.cedula %}"
+                            role="button">Eliminar</a>
+                        <a class="btn btn-primary" href="{% url 'modificar_cliente' cliente.cedula %}"
+                            role="button">Editar</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+<h4>Modificar Cuenta</h4>
+<div class="container">
+    <form method="POST"> {% csrf_token %}
+        <div class="form-group">
+            <label for="id_numero">Numero:</label> 
+            <input type="text" class="form-control" name="numero" value="{{formulario_cuenta.numero.value}}" maxlength="20" required id="id_numero">
+        </div><br>
+        <div class="form-group">
+            <label for="id_tipoCuenta">TipoCuenta:</label> 
+            <select name="tipoCuenta" class="form-control" id="id_tipoCuenta" value="{{formulario_cuenta.tipoCuenta.value}}">
+                {% if formulario_cuenta.tipoCuenta.value == 'ahorros' %}
+                <option value="ahorros" selected>Ahorros</option>
+                <option value="corriente">Corriente</option>
+                <option value="programado">Programado</option>
+                {% elif formulario_cuenta.tipoCuenta.value == 'corriente' %}
+                <option value="ahorros">Ahorros</option>
+                <option value="corriente" selected>Corriente</option>
+                <option value="programado">Programado</option>
+                {% elif formulario_cuenta.tipoCuenta.value == 'programado' %}
+                <option value="ahorros">Ahorros</option>
+                <option value="corriente">Corriente</option>
+                <option value="programado"selected>Programado</option>
+                {% endif %}
+            </select>
+        </div><br>
+        <div class="form-group">
+            <label for="id_saldo">Saldo:</label> 
+            <input type="number" class="form-control" name="saldo" value="{{formulario_cuenta.saldo.value}}" step="0.01" required id="id_saldo">
+        </div><br>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Modificar Cuenta</button>
+        </div><br>
+    </form>
+</div>
+
+{% endblock %}
+

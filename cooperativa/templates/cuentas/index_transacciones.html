@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+{% block contenido %}
+
+<head>
+    <meta>
+    <title>Cooperativa 2021</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <h4>Lista de Cuentas</h4>
+        <form class="d-flex" method="POST">{% csrf_token %}
+            <input  class="form-control" name="busqueda" placeholder="Ingrese su Busqueda"
+                aria-label="busqueda">
+            <button style="margin-left: 10px" class="btn btn-primary" type="submit">Buscar</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Numero</th>
+                <th scope="col">Saldo</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cuenta in listaCuentas %}
+                <tr>
+                    <td class="table-warning"><a class="btn btn-success" role="button" href="{% url 'cuenta_cliente' cuenta.numero %}">{{cuenta.numero}}</a></td>
+                    <td class="table-success">{{cuenta.saldo}}</td>
+                    <td class="table-info">{{cuenta.estado}}</td>
+                    <td class="table-secondary">{{cuenta.tipoCuenta}}</td>
+                </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
