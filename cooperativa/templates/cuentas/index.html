@@ -3,13 +3,19 @@
 
 
 <h4>Lista de cuenta del cliete:</h4>
-<p>
-    Nombre: {{cliente.nombres}}<br>
-    Apellido: {{cliente.apellidos}}
-</p>
 
 
 <div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <td><strong>Cliente: </strong> {{cliente.nombres}} {{cliente.apellidos}}</td>
+                <td><strong>Cedula: </strong>{{cliente.cedula}}</td>
+                <td><strong>Correo: </strong>{{cliente.correo}}</td>
+                
+            </tr>    
+        </thead>
+    </table>
     <a class="btn btn-primary" role="button" href="{% url 'crear_cuentas' cliente.cedula %}">Nueva Cuenta</a>
     <table class="table table-striped table-bordered">
         <thead>

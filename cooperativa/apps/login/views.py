@@ -29,11 +29,13 @@ def autenticar(request):
 
 
 def desautenticar(request):
-    return redirect(request, '/')
+    usuario = request.user
+    logout(request)
+    return redirect('login/logout.html')
 
 
 def welcome(request):
-    return render(request, 'homepage.html')
+    return render(request, 'welcome.html')
 
 
 def forbidden(request):

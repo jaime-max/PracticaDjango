@@ -1,2 +1,13 @@
-Forbidden<br>
-lo siento usted no tiene permisos
+
+{% extends 'master.html' %}
+
+{% block contenido %}
+
+<div class="jumbotron jumbotron-fluid">
+
+    <div class="alert alert-danger" role="alert">
+        !Lo siento usted no tiene permisos!
+        <a href="">Reinicie la sesion</a>
+    </div>
+</div>
+{% endblock %}
